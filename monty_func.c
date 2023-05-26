@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
- * read_file - reads a bytecode file and runs commands
+ * read_input - reads a bytecode file and runs commands
  * @filename: pathname to file
  * @stack: pointer to the top of the stack
  */
-void read_file(char *filename, stack_t **stack)
+void read_input(char *filename, stack_t **stack)
 {
 	char *line;
 	size_t i = 0;
@@ -14,17 +14,17 @@ void read_file(char *filename, stack_t **stack)
 	int read;
 
 
-	var_global.file = fopen(filename, "r");
+	global.file = fopen(filename, "r");
 
-	if (var_global.file == NULL)
+	if (global.file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&var_global.buffer, &i, var_global.file)) != -1)
+	while ((read = getline(&global.buffer, &i, global.file)) != -1)
 	{
-		line = parse_line(var_global.buffer, stack, line_count);
+		line = parse_line(global.buffer, stack, line_count);
 		if (line == NULL || line[0] == '#')
 		{
 			line_count++;
@@ -39,8 +39,8 @@ void read_file(char *filename, stack_t **stack)
 		s(stack, line_count);
 		line_count++;
 	}
-	free(var_global.buffer);
-	check = fclose(var_global.file);
+	free(global.buffer);
+	check = fclose(global.file);
 	if (check == -1)
 		exit(-1);
 }
@@ -112,10 +112,10 @@ int isnumber(char *str)
  * parse_line - parses a line for an opcode and arguments
  * @line: the line to be parsed
  * @stack: pointer to the head of the stack
- * @line_number: the current line number
+ * @number: the current line number
  * Return: returns the opcode or null on failure
  */
-char *parse_line(char *line, stack_t **stack, unsigned int line_number)
+char *parse_line(char *line, stack_t **stack, unsigned int number)
 {
 	char *op_code, *push, *arg;
 	(void)stack;
@@ -130,11 +130,11 @@ char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 		arg = strtok(NULL, "\n ");
 		if (isnumber(arg) == 1 && arg != NULL)
 		{
-			var_global.push_arg = atoi(arg);
+			global.num_arg = atoi(arg);
 		}
 		else
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", number);
 			exit(EXIT_FAILURE);
 		}
 	}

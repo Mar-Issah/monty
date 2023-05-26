@@ -1,5 +1,5 @@
 #include "monty.h"
-global_var var_global;
+global_var global;
 /**
  * main - driver function for monty program
  * @ac: int num of arguments
@@ -17,8 +17,7 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 
-	read_file(av[1], &stack);
-    /* recordar liberar memorias */
+	read_input(av[1], &stack);
 	free_dlistint(stack);
 	return (0);
 }

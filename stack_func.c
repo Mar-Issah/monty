@@ -2,12 +2,12 @@
 /**
  * _push - push int to a stack
  * @stack: linked lists for monty stack
- * @line_number: number of line opcode occurs on
+ * @number: number of line opcode occurs on
  */
-void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void _push(stack_t **stack, __attribute__ ((unused))unsigned int number)
 {
 	stack_t *top;
-	(void)line_number;
+	(void)number;
 
 	top = malloc(sizeof(stack_t));
 	if (top == NULL)
@@ -16,7 +16,7 @@ void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	top->n = var_global.push_arg;
+	top->n = global.num_arg;
 	top->next = *stack;
 	top->prev = NULL;
 	if (*stack != NULL)
@@ -27,9 +27,9 @@ void _push(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 /**
  * _pall - print all function
  * @stack: pointer to linked list stack
- * @line_number: number of line opcode occurs on
+ * @number: number of line opcode occurs on
  */
-void _pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void _pall(stack_t **stack, __attribute__ ((unused))unsigned int number)
 {
 	stack_t *runner;
 
@@ -44,17 +44,17 @@ void _pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 /**
  * _pint - print int a top of stack
  * @stack: pointer to linked list stack
- * @line_number: number of line opcode occurs on
+ * @number: number of line opcode occurs on
  *
  */
-void _pint(stack_t **stack, unsigned int line_number)
+void _pint(stack_t **stack, unsigned int number)
 {
 	stack_t *runner;
 
 	runner = *stack;
 	if (runner == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", number);
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", runner->n);
@@ -63,16 +63,16 @@ void _pint(stack_t **stack, unsigned int line_number)
 /**
  * _pop - remove element a list
  *@stack: pointer to first node
- *@line_number: integer
+ *@number: integer
  *Return: void
  */
-void _pop(stack_t **stack, unsigned int line_number)
+void _pop(stack_t **stack, unsigned int number)
 {
 	stack_t *nodo = *stack;
 
 	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", number);
 		exit(EXIT_FAILURE);
 	}
 	*stack = nodo->next;

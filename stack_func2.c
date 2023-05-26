@@ -2,10 +2,10 @@
 /**
  * _swap - swap top of stack y second top stack
  * @stack: pointer to lists for monty stack
- * @line_number: number of line opcode occurs on
+ * @number: number of line opcode occurs on
  */
 
-void _swap(stack_t **stack, unsigned int line_number)
+void _swap(stack_t **stack, unsigned int number)
 {
 	stack_t *runner;
 	int tmp;
@@ -13,7 +13,7 @@ void _swap(stack_t **stack, unsigned int line_number)
 	runner = *stack;
 	if (runner == NULL || runner->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", number);
 		exit(EXIT_FAILURE);
 	}
 	tmp = runner->n;
@@ -24,17 +24,17 @@ void _swap(stack_t **stack, unsigned int line_number)
 /**
  * _add - add top of stack y second top stack
  * @stack: pointer to lists for monty stack
- * @line_number: number of line opcode occurs on
+ * @number: number of line opcode occurs on
  */
 
-void _add(stack_t **stack, unsigned int line_number)
+void _add(stack_t **stack, unsigned int number)
 {
 	stack_t *tmp = *stack;
 	int sum = 0, i = 0;
 
 	if (tmp == NULL)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -46,11 +46,11 @@ void _add(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL || (*stack)->next == NULL || i <= 1)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", number);
 		exit(EXIT_FAILURE);
 	}
 	sum = (*stack)->next->n + (*stack)->n;
-	_pop(stack, line_number);
+	_pop(stack, number);
 
 	(*stack)->n = sum;
 }
@@ -58,11 +58,11 @@ void _add(stack_t **stack, unsigned int line_number)
 /**
  * _nop - nop top of stack y second top stack
  * @stack: pointer to lists for monty stack
- * @line_number: number of line opcode occurs on
+ * @number: number of line opcode occurs on
  */
 
 void _nop(__attribute__ ((unused))stack_t **stack,
-		__attribute__ ((unused)) unsigned int line_number)
+		__attribute__ ((unused)) unsigned int number)
 {
 	;
 }
@@ -70,18 +70,18 @@ void _nop(__attribute__ ((unused))stack_t **stack,
 /**
  * _pchar - prints the ASCII value of a number
  * @stack: pointer to the top of the stack
- * @line_number: the index of the current line
+ * @number: the index of the current line
  *
  */
-void _pchar(stack_t **stack, unsigned int line_number)
+void _pchar(stack_t **stack, unsigned int number)
 {
 	int val;
 
 	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
-		free(var_global.buffer);
-		fclose(var_global.file);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", number);
+		free(global.buffer);
+		fclose(global.file);
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -89,9 +89,9 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	val = (*stack)->n;
 	if (val > 127 || val < 0)
 	{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
-		free(var_global.buffer);
-		fclose(var_global.file);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", number);
+		free(global.buffer);
+		fclose(global.file);
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
