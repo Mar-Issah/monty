@@ -82,7 +82,7 @@ void _pchar(stack_t **stack, unsigned int number)
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", number);
 		free(global.buffer);
 		fclose(global.file);
-		free_dlistint(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -92,7 +92,7 @@ void _pchar(stack_t **stack, unsigned int number)
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", number);
 		free(global.buffer);
 		fclose(global.file);
-		free_dlistint(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -101,11 +101,11 @@ void _pchar(stack_t **stack, unsigned int number)
 }
 
 /**
- * _isalpha - checks if int is in alphabet
+ * _isalphabet - checks if int is in alphabet
  * @c: int
  * Return: 1 if yes, 0 if no
  */
-int _isalpha(int c)
+int _isalphabet(int c)
 {
 	if ((c >= 97 && c <= 122) || (c >= 65 && c <= 90))
 		return (1);

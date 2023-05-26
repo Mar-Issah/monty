@@ -56,13 +56,14 @@ typedef struct global_variable
 
 extern global_var global;
 
-void read_input(char *filename, stack_t **stack);
-char *parse_line(char *line, stack_t **stack, unsigned int number);
 typedef void (*instruct_func)(stack_t **stack, unsigned int number);
 instruct_func get_op_func(char *str);
 
-void free_dlistint(stack_t *head);
-int _isalpha(int c);
+void read_input(char *filename, stack_t **stack);
+char *parse_line(char *line, stack_t **stack, unsigned int number);
+
+void free_stack(stack_t *head);
+int _isalphabet(int c);
 
 void _pall(stack_t **stack, unsigned int number);
 void _push(stack_t **stack, unsigned int number);

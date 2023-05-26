@@ -18,6 +18,6 @@ int main(int ac, char **av)
 	}
 
 	read_input(av[1], &stack);
-	free_dlistint(stack);
+	free_stack(stack);
 	return (0);
 }

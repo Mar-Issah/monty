@@ -47,7 +47,7 @@ void _mul(stack_t **stack, unsigned int number)
 		fprintf(stderr, "L%d: can't mul, stack too short\n", number);
 		free(global.buffer);
 		fclose(global.file);
-		free_dlistint(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -72,7 +72,7 @@ void _div(stack_t **stack, unsigned int number)
 		fprintf(stderr, "L%u: can't div, stack too short\n", number);
 		free(global.buffer);
 		fclose(global.file);
-		free_dlistint(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	else if ((*stack)->n == 0)
@@ -80,7 +80,7 @@ void _div(stack_t **stack, unsigned int number)
 		fprintf(stderr, "L%d: division by zero\n", number);
 		free(global.buffer);
 		fclose(global.file);
-		free_dlistint(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -105,7 +105,7 @@ void _mod(stack_t **stack, unsigned int number)
 		fprintf(stderr, "L%u: can't mod, stack too short\n", number);
 		free(global.buffer);
 		fclose(global.file);
-		free_dlistint(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	else if ((*stack)->n == 0)
@@ -113,7 +113,7 @@ void _mod(stack_t **stack, unsigned int number)
 		fprintf(stderr, "L%d: division by zero\n", number);
 		free(global.buffer);
 		fclose(global.file);
-		free_dlistint(*stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	else
