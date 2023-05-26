@@ -57,7 +57,7 @@ typedef struct global_variable
 extern global_var global;
 
 typedef void (*instruct_func)(stack_t **stack, unsigned int number);
-instruct_func get_op_func(char *str);
+instruct_func execute_program(char *str);
 
 void read_input(char *filename, stack_t **stack);
 char *parse_line(char *line, stack_t **stack, unsigned int number);
