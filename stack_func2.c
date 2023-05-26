@@ -8,7 +8,7 @@
 void _swap(stack_t **stack, unsigned int number)
 {
 	stack_t *runner;
-	int tmp;
+	int temp;
 
 	runner = *stack;
 	if (runner == NULL || runner->next == NULL)
@@ -16,9 +16,9 @@ void _swap(stack_t **stack, unsigned int number)
 		fprintf(stderr, "L%d: can't swap, stack too short\n", number);
 		exit(EXIT_FAILURE);
 	}
-	tmp = runner->n;
+	temp = runner->n;
 	runner->n = runner->next->n;
-	runner->next->n = tmp;
+	runner->next->n = temp;
 }
 
 /**
@@ -29,18 +29,18 @@ void _swap(stack_t **stack, unsigned int number)
 
 void _add(stack_t **stack, unsigned int number)
 {
-	stack_t *tmp = *stack;
+	stack_t *temp = *stack;
 	int sum = 0, i = 0;
 
-	if (tmp == NULL)
+	if (temp == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", number);
 		exit(EXIT_FAILURE);
 	}
 
-	while (tmp)
+	while (temp)
 	{
-		tmp = tmp->next;
+		temp = temp->next;
 		i++;
 	}
 

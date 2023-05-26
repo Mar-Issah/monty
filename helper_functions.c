@@ -139,3 +139,20 @@ char *parse_line(char *line, stack_t **stack, unsigned int number)
 	}
 	return (op_code);
 }
+
+/**
+ * free_stack - free a stack
+ * @head: pointer to first node
+ *
+ */
+void free_stack(stack_t *head)
+{
+	stack_t *temp;
+
+	while (head != NULL)
+	{
+		temp = head->next;
+		free(head);
+		head = temp;
+	}
+}

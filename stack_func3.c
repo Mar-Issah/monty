@@ -7,19 +7,19 @@
  */
 void _pstr(stack_t **stack, unsigned int number)
 {
-	stack_t *tmp = *stack;
+	stack_t *temp = *stack;
 	int c = 0;
 
 	(void)number;
 
 
-	while (tmp)
+	while (temp)
 	{
-		c = tmp->n;
+		c = temp->n;
 		if (c == 0 || _isalphabet(c) == 0)
 			break;
 		putchar(c);
-		tmp = tmp->next;
+		temp = temp->next;
 	}
 	putchar('\n');
 }

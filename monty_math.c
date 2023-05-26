@@ -7,18 +7,18 @@
  */
 void _sub(stack_t **stack, unsigned int number)
 {
-	stack_t *tmp = *stack;
+	stack_t *temp = *stack;
 	int sub = 0, i = 0;
 
-	if (tmp == NULL)
+	if (temp == NULL)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", number);
 		exit(EXIT_FAILURE);
 	}
 
-	while (tmp)
+	while (temp)
 	{
-		tmp = tmp->next;
+		temp = temp->next;
 		i++;
 	}
 
