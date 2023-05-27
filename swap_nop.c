@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * _swap - swap top of stack y second top stack
+ * _swap -  swaps the top two elements of the stack
  * @stack: pointer to lists for monty stack
  * @number: number of line opcode occurs on
  */

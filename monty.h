@@ -83,6 +83,4 @@ void _mul(stack_t **stack, unsigned int number);
 void _div(stack_t **stack, unsigned int number);
 void _mod(stack_t **stack, unsigned int number);
 
-void handle_error();
-
 #endif
