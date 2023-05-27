@@ -65,8 +65,8 @@ char *parse_line(char *line, stack_t **stack, unsigned int number);
 void free_stack(stack_t *head);
 int _isalphabet(int c);
 
-void _pall(stack_t **stack, unsigned int number);
 void _push(stack_t **stack, unsigned int number);
+void _pall(stack_t **stack, unsigned int number);
 void _pint(stack_t **stack, unsigned int number);
 void _pop(stack_t **stack, unsigned int number);
 void _swap(stack_t **stack, unsigned int number);

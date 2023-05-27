@@ -1,27 +1,5 @@
 #include "monty.h"
 /**
- * _swap - swap top of stack y second top stack
- * @stack: pointer to lists for monty stack
- * @number: number of line opcode occurs on
- */
-
-void _swap(stack_t **stack, unsigned int number)
-{
-	stack_t *runner;
-	int temp;
-
-	runner = *stack;
-	if (runner == NULL || runner->next == NULL)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", number);
-		exit(EXIT_FAILURE);
-	}
-	temp = runner->n;
-	runner->n = runner->next->n;
-	runner->next->n = temp;
-}
-
-/**
  * _add - add top of stack y second top stack
  * @stack: pointer to lists for monty stack
  * @number: number of line opcode occurs on
@@ -53,18 +31,6 @@ void _add(stack_t **stack, unsigned int number)
 	_pop(stack, number);
 
 	(*stack)->n = sum;
-}
-
-/**
- * _nop - nop top of stack y second top stack
- * @stack: pointer to lists for monty stack
- * @number: number of line opcode occurs on
- */
-
-void _nop(__attribute__ ((unused))stack_t **stack,
-		__attribute__ ((unused)) unsigned int number)
-{
-	;
 }
 
 /**
