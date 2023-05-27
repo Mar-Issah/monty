@@ -1,4 +1,5 @@
 #include "monty.h"
+global_var global;
 /**
  * main - driver function for monty program
  * @ac: int num of arguments
@@ -7,7 +8,6 @@
  */
 int main(int ac, char **av)
 {
-	global_var global;
 	stack_t *stack;
 
 	stack = NULL;
