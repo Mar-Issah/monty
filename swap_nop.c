@@ -22,7 +22,7 @@ void _swap(stack_t **stack, unsigned int number)
 }
 
 /**
- * _nop - nop top of stack y second top stack
+ * _nop - nop doesn’t do anything
  * @stack: pointer to lists for monty stack
  * @number: number of line opcode occurs on
  */
