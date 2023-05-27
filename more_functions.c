@@ -45,3 +45,56 @@ int _isalphabet(int c)
 	else
 		return (0);
 }
+
+/**
+ * _rotl -  prints the string starting at the top of the stack
+ * @stack: pointer to lists for monty stack
+ * @number: number of line
+ */
+void _rotl(stack_t **stack, unsigned int number)
+{
+	stack_t *head = *stack;
+
+	int auxiliary = 0;
+
+	if (!number || !stack || !*stack || !(*stack)->next)
+		return;
+
+	auxiliary = head->n;
+
+	while (head->next)
+	{
+		head = head->next;
+		head->prev->n = head->n;
+	}
+
+	head->n = auxiliary;
+}
+
+/**
+ * _rotr - rotl rotates the stack to the top
+ * @stack: pointer to lists for monty stack
+ * @number: number of line
+ */
+void _rotr(stack_t **stack, unsigned int number)
+{
+	stack_t *h = *stack;
+
+	int auxiliary = 0;
+
+	if (!number || !stack || !*stack || !(*stack)->next)
+		return;
+
+	while (h->next)
+		h = h->next;
+
+	auxiliary = h->n;
+
+	while (h->prev)
+	{
+		h = h->prev;
+		h->next->n = h->n;
+	}
+
+	h->n = auxiliary;
+}
