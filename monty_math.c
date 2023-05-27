@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * _sub -  subtracts the top element of the stack
+ * _sub - sub top of stack y second top stack
  * @stack: pointer to lists for monty stack
- * @number: number of line opcode occurs
+ * @number: number of line opcode occurs on
  */
 void _sub(stack_t **stack, unsigned int number)
 {
 	stack_t *temp = *stack;
-	int sub = 0, idx = 0;
+	int sub = 0, i = 0;
 
 	if (temp == NULL)
 	{
@@ -19,10 +19,10 @@ void _sub(stack_t **stack, unsigned int number)
 	while (temp)
 	{
 		temp = temp->next;
-		idx++;
+		i++;
 	}
 
-	if (stack == NULL || (*stack)->next == NULL || idx <= 1)
+	if (stack == NULL || (*stack)->next == NULL || i <= 1)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", number);
 		exit(EXIT_FAILURE);
@@ -45,7 +45,10 @@ void _mul(stack_t **stack, unsigned int number)
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", number);
-		handleError()
+		free(global.buffer);
+		fclose(global.file);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
@@ -67,12 +70,18 @@ void _div(stack_t **stack, unsigned int number)
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", number);
-		handleError()
+		free(global.buffer);
+		fclose(global.file);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
 	}
 	else if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", number);
-		handleError()
+		free(global.buffer);
+		fclose(global.file);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
@@ -87,8 +96,7 @@ void _div(stack_t **stack, unsigned int number)
  * @stack: pointer to lists for monty stack
  * @number: number of line opcode occurs on
  */
-
-/**void _mod(stack_t **stack, unsigned int number)
+void _mod(stack_t **stack, unsigned int number)
 {
 	int mod = 0;
 
@@ -114,16 +122,4 @@ void _div(stack_t **stack, unsigned int number)
 		_pop(stack, number);
 		(*stack)->n %= mod;
 	}
-}
-*/
-
-/**
- * handleError - handles error
- */
-void handleError()
-{
-	free(global.buffer);
-	fclose(global.file);
-	free_stack(*stack);
-	exit(EXIT_FAILURE);
 }

@@ -71,7 +71,6 @@ void _pint(stack_t **stack, unsigned int number);
 void _pop(stack_t **stack, unsigned int number);
 void _swap(stack_t **stack, unsigned int number);
 void _nop(stack_t **stack, unsigned int number);
-void _add(stack_t **stack, unsigned int number);
 void _rotl(stack_t **stack, unsigned int number);
 void _rotr(stack_t **stack, unsigned int number);
 
@@ -79,6 +78,7 @@ void _pchar(stack_t **stack, unsigned int number);
 void _pstr(stack_t **stack, unsigned int number);
 
 void _sub(stack_t **stack, unsigned int number);
+void _add(stack_t **stack, unsigned int number);
 void _mul(stack_t **stack, unsigned int number);
 void _div(stack_t **stack, unsigned int number);
 void _mod(stack_t **stack, unsigned int number);
